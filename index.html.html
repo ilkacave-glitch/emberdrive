@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmberDrive</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EmberDrive">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0f1114">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTAiIGZpbGw9IiMwZjExMTQiLz4KICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMzQwIiByeD0iMTIwIiByeT0iMTgiIGZpbGw9IiNmNWE2MjMiIG9wYWNpdHk9IjAuMTUiLz4KICA8cmVjdCB4PSI5MCIgeT0iMzcwIiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMyYTJmMzgiLz4KICA8cmVjdCB4PSIyMDAiIHk9IjM3MCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzJhMmYzOCIvPgogIDxyZWN0IHg9IjM1MCIgeT0iMzcwIiB3aWR0aD0iNzAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMyYTJmMzgiLz4KICA8cGF0aCBkPSJNMjU2IDgwIEMyNTYgODAgMjAwIDE1MCAxOTAgMjEwIEMxNzggMjc1IDIxMCAyOTUgMjEwIDI5NSBDMTQ1IDI2MCAyMDUgMjM1IDIyNSAyMjUgQzIxNSAyNjUgMjMwIDI4MCAyNTYgMzEwIEMyODIgMjgwIDI5NyAyNjUgMjg3IDIyNSBDMzA3IDIzNSAzMTcgMjYwIDMwMiAyOTUgQzMwMiAyOTUgMzM0IDI3NSAzMjIgMjEwIEMzMTIgMTUwIDI1NiA4MCAyNTYgODBaIiBmaWxsPSIjZjVhNjIzIi8+CiAgPHBhdGggZD0iTTI1NiAxNDAgQzI1NiAxNDAgMjIwIDE5MCAyMTUgMjMwIEMyMTAgMjY1IDIyOCAyNzggMjI4IDI3OCBDMTI4IDI1NSAyMjggMjQyIDI0MiAyMzYgQzIzOCAyNTggMjQ1IDI2OCAyNTYgMjg1IEMyNjcgMjY4IDI3NCAyNTggMjcwIDIzNiBDMjg0IDI0MiAyOTIgMjU1IDI4NCAyNzggQzI4NCAyNzggMzAyIDI2NSAyOTcgMjMwIEMyOTIgMTkwIDI1NiAxNDAgMjU2IDE0MFoiIGZpbGw9IiNmZmI4MzMiLz4KICA8cGF0aCBkPSJNMjU2IDE5MCBDMJQ4IDE5MCAyMzggMjE1IDIzNiAyMzggQzIzNCAyNTUgMjQzIDI2MyAyNDMgMjYzIEMyNDAgMjUwIDI0NSAyNDMgMjUyIDI0MCBDMjUxIDI1MiAyNTMgMjU4IDI1NiAyNjggQzI1OSAyNTggMjYxIDI1MiAyNjAgMjQwIEMyNjcgMjQzIDI3MiAyNTAgMjY5IDI2MyBDMjY5IDI2MyAyNzggMjU1IDI3NiAyMzggQzI3NCAyMTUgMjU2IDE5MCAyNTYgMTkwWiIgZmlsbD0iI2ZmZjVlMCIgb3BhY2l0eT0iMC45Ii8+CiAgPHBhdGggZD0iTSAxNDAgMzEwIEEgMTE2IDExNiAwIDAgMSAzNzIgMzEwIiBzdHJva2U9IiMyYTJmMzgiIHN0cm9rZS13aWR0aD0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0gMTQwIDMxMCBBIDExNiAxMTYgMCAwIDEgMzEwIDE4NSIgc3Ryb2tlPSIjZjVhNjIzIiBzdHJva2Utd2lkdGg9IjEyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNyIvPgogIDxsaW5lIHgxPSIyNTYiIHkxPSIzMTAiIHgyPSIyOTgiIHkyPSIxOTgiIHN0cm9rZT0iIzNlY2ZjZiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIzMTAiIHI9IjEwIiBmaWxsPSIjZjVhNjIzIi8+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMzEwIiByPSI1IiBmaWxsPSIjMGYxMTE0Ii8+CiAgPHRleHQgeD0iMjU2IiB5PSI0MzAiIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjUyIiBmaWxsPSIjZjVhNjIzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMyI+RU1CRVI8L3RleHQ+CiAgPHRleHQgeD0iMjU2IiB5PSI0ODAiIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjM4IiBmaWxsPSIjM2VjZmNmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iNiI+RFJJVUU8L3RleHQ+Cjwvc3ZnPg==">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1114;
+    --surface: #181b20;
+    --card: #1e2228;
+    --border: #2a2f38;
+    --accent: #f5a623;
+    --accent2: #3ecfcf;
+    --danger: #e05252;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --green: #4ade80;
+    --fuel: #60a5fa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+
+  /* SETUP SCREEN */
+  .setup-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 24px;
+  }
+  .setup-screen.hidden { display: none; }
+  .setup-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .setup-logo span { color: var(--accent2); }
+  .setup-tagline {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .setup-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+  }
+  .setup-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--surface);
+    border-bottom: 2px solid var(--accent);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .header-left p {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+  .odometer-badge {
+    text-align: right;
+  }
+  .odometer-badge .label {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .odometer-badge .value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent2);
+    letter-spacing: 1px;
+  }
+  .odometer-badge .value span { font-size: 0.85rem; color: var(--muted); }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+  }
+  .tab {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 18px 10px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    color: var(--muted);
+    transition: all 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab:hover:not(.active) { color: var(--text); }
+
+  /* PANELS */
+  .panel { display: none; padding: 20px; }
+  .panel.active { display: block; }
+
+  /* STAT STRIP */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .stat .s-label {
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .stat .s-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .stat .s-val.accent { color: var(--accent); }
+  .stat .s-val.green { color: var(--green); }
+  .stat .s-val.fuel { color: var(--fuel); }
+
+  /* FORMS */
+  .form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+  .form-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .form-card h3 .pill {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-size: 0.65rem;
+    padding: 1px 7px;
+    border-radius: 20px;
+    margin-left: 8px;
+    font-weight: 800;
+  }
+  .form-card h3 .pill.fuel-pill { background: var(--fuel); }
+  label {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    margin-top: 12px;
+  }
+  label:first-of-type { margin-top: 0; }
+  input[type="number"], input[type="text"], input[type="date"], select, textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 1rem;
+    padding: 10px 12px;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  textarea { resize: vertical; min-height: 70px; font-size: 0.9rem; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .trip-type-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .type-btn {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--border);
+    background: var(--bg);
+    color: var(--muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .type-btn.selected-business {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(245,166,35,0.08);
+  }
+  .type-btn.selected-private {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: rgba(224,82,82,0.08);
+  }
+
+  /* BUTTONS */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #000; }
+  .btn-primary:hover { background: #ffb833; }
+  .btn-fuel { background: var(--fuel); color: #000; }
+  .btn-fuel:hover { background: #7bb8fb; }
+  .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); padding: 8px; font-size: 0.75rem; margin-top: 6px; }
+  .btn-sm { font-size: 0.75rem; padding: 7px 14px; width: auto; display: inline-block; margin-top: 0; }
+
+  /* LOG ENTRIES */
+  .log-entry {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    position: relative;
+    border-left: 3px solid var(--accent);
+  }
+  .log-entry.private { border-left-color: var(--danger); }
+  .log-entry.fuel-entry { border-left-color: var(--fuel); }
+  .entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .entry-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .entry-type {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .entry-type.business { background: rgba(245,166,35,0.15); color: var(--accent); }
+  .entry-type.private { background: rgba(224,82,82,0.15); color: var(--danger); }
+  .entry-type.fuel { background: rgba(96,165,250,0.15); color: var(--fuel); }
+  .entry-km {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .entry-km .unit { font-size: 0.9rem; color: var(--muted); }
+  .entry-km .sub { font-size: 0.8rem; color: var(--muted); font-weight: 400; font-family: 'Barlow', sans-serif; }
+  .entry-dest {
+    font-size: 0.88rem;
+    color: var(--text);
+    margin-top: 4px;
+  }
+  .entry-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .entry-actions { margin-top: 8px; display: flex; gap: 8px; }
+  .delete-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 0.72rem;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Barlow', sans-serif;
+    text-decoration: underline;
+  }
+  .delete-btn:hover { color: var(--danger); }
+
+  /* FUEL PHOTO */
+  .photo-preview {
+    margin-top: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    max-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    border: 1px dashed var(--border);
+  }
+  .photo-preview img { max-width: 100%; max-height: 200px; object-fit: contain; }
+  .photo-placeholder {
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 20px;
+  }
+  .photo-placeholder span { display: block; font-size: 2rem; margin-bottom: 6px; }
+  .photo-upload-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 5px;
+    color: var(--fuel);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.2s;
+    margin-top: 8px;
+  }
+  .photo-upload-btn:hover { border-color: var(--fuel); }
+  input[type="file"] { display: none; }
+
+  /* SUMMARY TABLE */
+  .summary-section h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 20px;
+  }
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    background: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .summary-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .summary-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .summary-table tr:last-child td { border-bottom: none; }
+  .summary-table .tot { font-weight: 600; color: var(--accent); }
+
+  /* EMPTY */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+  }
+  .empty-state .icon { font-size: 2.5rem; margin-bottom: 10px; }
+  .empty-state p { font-size: 0.88rem; }
+
+  /* MONTH FILTER */
+  .filter-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+  .filter-row select {
+    flex: 1;
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+  .filter-row .count {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* VOICE */
+  .voice-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .voice-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  .voice-card h3 .pill { background: #a78bfa; }
+  .mic-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--border);
+    color: var(--muted);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .mic-btn:hover { border-color: #a78bfa; color: #a78bfa; }
+  .mic-btn.listening {
+    border-color: #a78bfa;
+    background: rgba(167,139,250,0.12);
+    color: #a78bfa;
+    animation: pulse-mic 1s ease-in-out infinite;
+  }
+  .mic-btn.processing {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    animation: spin-slow 1.5s linear infinite;
+  }
+  @keyframes pulse-mic {
+    0%,100% { box-shadow: 0 0 0 0 rgba(167,139,250,0.4); }
+    50% { box-shadow: 0 0 0 14px rgba(167,139,250,0); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .voice-status {
+    font-size: 0.82rem;
+    color: var(--muted);
+    min-height: 20px;
+    margin-bottom: 12px;
+  }
+  .voice-status.active { color: #a78bfa; }
+  .voice-status.processing { color: var(--accent2); }
+  .voice-status.success { color: var(--green); }
+  .voice-status.error { color: var(--danger); }
+  .voice-transcript {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    color: var(--text);
+    min-height: 44px;
+    text-align: left;
+    margin-bottom: 12px;
+    font-style: italic;
+    display: none;
+  }
+  .voice-transcript.visible { display: block; }
+  .voice-hints {
+    text-align: left;
+    margin-top: 10px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+  .voice-hints p {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .hint-chip {
+    display: inline-block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin: 3px 3px 3px 0;
+    font-style: italic;
+  }
+  .voice-parsed {
+    background: rgba(167,139,250,0.08);
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    text-align: left;
+    display: none;
+  }
+  .voice-parsed.visible { display: block; }
+  .voice-parsed .p-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(167,139,250,0.1);
+  }
+  .voice-parsed .p-row:last-child { border-bottom: none; }
+  .voice-parsed .p-key { color: var(--muted); font-size: 0.7rem; letter-spacing: 0.5px; text-transform: uppercase; }
+  .voice-parsed .p-val { color: #a78bfa; font-weight: 600; }
+
+  /* Export */
+  .export-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .btn-export {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    text-align: center;
+  }
+  .btn-export:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* FUEL ENTRY CARD */
+  .fuel-slip-preview {
+    margin-top: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+    max-height: 140px;
+    display: flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+  .fuel-slip-preview img { max-width: 100%; max-height: 140px; object-fit: contain; }
+
+  /* Success toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--green);
+    color: #000;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 30px;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.fuel-toast { background: var(--fuel); }
+</style>
+</head>
+<body>
+
+<!-- SETUP SCREEN -->
+<div class="setup-screen" id="setup-screen">
+  <div class="setup-logo">EMBER<span>DRIVE</span></div>
+  <div class="setup-tagline">Fleet Logbook · First Time Setup</div>
+  <div class="setup-card">
+    <h3>Tell us about your vehicle</h3>
+    <label>Your Name</label>
+    <input type="text" id="setup-name" placeholder="e.g. Ilka">
+    <label>Vehicle Registration</label>
+    <input type="text" id="setup-rego" placeholder="e.g. MTY291" style="text-transform:uppercase">
+    <label>Company Name</label>
+    <input type="text" id="setup-company" placeholder="e.g. Ember Employment">
+    <button class="btn btn-primary" onclick="saveSetup()">Get Started 🔥</button>
+  </div>
+</div>
+
+<header>
+  <div class="header-left">
+    <h1 id="header-title">EmberDrive</h1>
+    <p id="header-sub">Fleet Logbook</p>
+  </div>
+  <div class="odometer-badge">
+    <div class="label">Current Odo</div>
+    <div class="value" id="currentOdo">—<span> km</span></div>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('trip')">🚗 Trip</button>
+  <button class="tab" onclick="showTab('fuel')">⛽ Fuel</button>
+  <button class="tab" onclick="showTab('log')">📋 Log</button>
+  <button class="tab" onclick="showTab('summary')">📊 Summary</button>
+</div>
+
+<!-- TRIP PANEL -->
+<div class="panel active" id="panel-trip">
+  <div class="stat-strip">
+    <div class="stat">
+      <div class="s-label">This Month</div>
+      <div class="s-val accent" id="stat-month">0 km</div>
+    </div>
+    <div class="stat">
+      <div class="s-label">Business</div>
+      <div class="s-val green" id="stat-business">0 km</div>
+    </div>
+    <div class="stat">
+      <div class="s-label">Private</div>
+      <div class="s-val" style="color:var(--danger)" id="stat-private">0 km</div>
+    </div>
+  </div>
+
+  <!-- VOICE INPUT CARD -->
+  <div class="voice-card" id="voice-card">
+    <h3>Voice Entry <span class="pill" style="background:#a78bfa">🎙 New</span></h3>
+    <button class="mic-btn" id="mic-btn" onclick="toggleVoice()">🎙</button>
+    <div class="voice-status" id="voice-status">Tap the mic and speak your trip</div>
+    <div class="voice-transcript" id="voice-transcript"></div>
+    <div class="voice-parsed" id="voice-parsed"></div>
+    <div class="voice-hints">
+      <p>Try saying:</p>
+      <span class="hint-chip">"Trip to Hamilton, opening 45230"</span>
+      <span class="hint-chip">"Client visit Tauranga, odo 48500 to 48612"</span>
+      <span class="hint-chip">"Private trip to Hamilton, 46000"</span>
+      <span class="hint-chip">"Fuel 48 litres, 112 dollars, odo 48700"</span>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h3>Log a Trip <span class="pill">Manual</span></h3>
+
+    <label>Date</label>
+    <input type="date" id="trip-date">
+
+    <label>Opening Odometer (km)</label>
+    <input type="number" id="trip-open" placeholder="e.g. 45230" min="0">
+
+    <label>Closing Odometer (km) <span style="color:var(--muted);font-size:0.7rem;text-transform:none;letter-spacing:0;font-weight:400">— leave blank if still travelling</span></label>
+    <input type="number" id="trip-close" placeholder="e.g. 45318 (optional)" min="0">
+
+    <label>Destination / Purpose</label>
+    <input type="text" id="trip-dest" placeholder="e.g. Client visit – Tauranga Hospital">
+
+    <label>Trip Type</label>
+    <div class="trip-type-toggle">
+      <button class="type-btn selected-business" id="btn-business" onclick="selectType('business')">✔ Business</button>
+      <button class="type-btn" id="btn-private" onclick="selectType('private')">Private</button>
+    </div>
+
+    <label>Notes (optional)</label>
+    <textarea id="trip-notes" placeholder="Any additional details…"></textarea>
+
+    <button class="btn btn-primary" onclick="saveTrip()">Save Trip Entry</button>
+  </div>
+</div>
+
+<!-- FUEL PANEL -->
+<div class="panel" id="panel-fuel">
+  <div class="form-card">
+    <h3>Record Fuel Fill-up <span class="pill fuel-pill">Petrol</span></h3>
+
+    <label>Date</label>
+    <input type="date" id="fuel-date">
+
+    <div class="row2">
+      <div>
+        <label>Litres</label>
+        <input type="number" id="fuel-litres" placeholder="e.g. 48.2" step="0.1" min="0">
+      </div>
+      <div>
+        <label>Cost (NZD)</label>
+        <input type="number" id="fuel-cost" placeholder="e.g. 112.50" step="0.01" min="0">
+      </div>
+    </div>
+
+    <label>Odometer at Fill-up (km)</label>
+    <input type="number" id="fuel-odo" placeholder="e.g. 45420" min="0">
+
+    <label>Station / Location (optional)</label>
+    <input type="text" id="fuel-station" placeholder="e.g. Z Energy, Hamilton">
+
+    <label>Petrol Slip Photo</label>
+    <input type="file" id="fuel-photo-input" accept="image/*" capture="environment" onchange="previewFuelPhoto(event)">
+    <button class="photo-upload-btn" onclick="document.getElementById('fuel-photo-input').click()">
+      📷 &nbsp;Take Photo or Upload Slip
+    </button>
+    <div class="photo-preview" id="fuel-photo-preview">
+      <div class="photo-placeholder">
+        <span>🧾</span>
+        No slip photo yet
+      </div>
+    </div>
+
+    <button class="btn btn-fuel" onclick="saveFuel()">Save Fuel Entry</button>
+  </div>
+</div>
+
+<!-- LOG PANEL -->
+<div class="panel" id="panel-log">
+  <div class="filter-row">
+    <select id="log-filter" onchange="renderLog()">
+      <option value="all">All Entries</option>
+    </select>
+    <span class="count" id="log-count">0 entries</span>
+  </div>
+
+  <div id="log-list"></div>
+</div>
+
+<!-- SUMMARY PANEL -->
+<div class="panel" id="panel-summary">
+  <div class="filter-row">
+    <select id="sum-filter" onchange="renderSummary()">
+      <option value="all">All Time</option>
+    </select>
+  </div>
+
+  <div class="export-row">
+    <button class="btn-export" onclick="exportCSV()">⬇ Export CSV</button>
+    <button class="btn-export" onclick="window.print()">🖨 Print</button>
+  </div>
+  <div class="export-row">
+    <button class="btn-export" onclick="resetSettings()">⚙ Change Vehicle/Name</button>
+  </div>
+
+  <div class="summary-section" id="summary-content"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA LAYER ──────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'mty291_logbook_v1';
+
+function load() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { trips: [], fuel: [] }; }
+  catch { return { trips: [], fuel: [] }; }
+}
+function save(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+let db = load();
+
+// ── STATE ───────────────────────────────────────────────────────────────────
+let tripType = 'business';
+let fuelPhotoData = null;
+
+// ── TABS ────────────────────────────────────────────────────────────────────
+function showTab(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.querySelectorAll('.tab')[['trip','fuel','log','summary'].indexOf(name)].classList.add('active');
+  if (name === 'log') renderLog();
+  if (name === 'summary') renderSummary();
+  if (name === 'trip') updateDashboard();
+}
+
+// ── TRIP TYPE ───────────────────────────────────────────────────────────────
+function selectType(t) {
+  tripType = t;
+  document.getElementById('btn-business').className = 'type-btn' + (t==='business' ? ' selected-business' : '');
+  document.getElementById('btn-private').className = 'type-btn' + (t==='private' ? ' selected-private' : '');
+  if (t === 'business') { document.getElementById('btn-business').textContent = '✔ Business'; document.getElementById('btn-private').textContent = 'Private'; }
+  else { document.getElementById('btn-private').textContent = '✔ Private'; document.getElementById('btn-business').textContent = 'Business'; }
+}
+
+// ── SAVE TRIP ───────────────────────────────────────────────────────────────
+function saveTrip() {
+  const date = document.getElementById('trip-date').value;
+  const open = parseFloat(document.getElementById('trip-open').value);
+  const close = document.getElementById('trip-close').value ? parseFloat(document.getElementById('trip-close').value) : null;
+  const dest = document.getElementById('trip-dest').value.trim();
+  const notes = document.getElementById('trip-notes').value.trim();
+
+  if (!date) { alert('Please enter a date.'); return; }
+  if (isNaN(open)) { alert('Please enter the opening odometer reading.'); return; }
+  if (!dest) { alert('Please enter a destination or purpose.'); return; }
+  if (close !== null && close < open) { alert('Closing odometer cannot be less than opening.'); return; }
+
+  const km = close !== null ? Math.round(close - open) : null;
+
+  const entry = { id: Date.now(), date, open, close, km, dest, notes, type: tripType };
+  db.trips.push(entry);
+  db.trips.sort((a,b) => new Date(b.date) - new Date(a.date));
+  save(db);
+
+  // reset
+  document.getElementById('trip-date').value = '';
+  document.getElementById('trip-open').value = '';
+  document.getElementById('trip-close').value = '';
+  document.getElementById('trip-dest').value = '';
+  document.getElementById('trip-notes').value = '';
+  selectType('business');
+
+  updateDashboard();
+  updateFilters();
+  showToast('Trip saved ✓', false);
+}
+
+// ── SAVE FUEL ───────────────────────────────────────────────────────────────
+function saveFuel() {
+  const date = document.getElementById('fuel-date').value;
+  const litres = parseFloat(document.getElementById('fuel-litres').value);
+  const cost = parseFloat(document.getElementById('fuel-cost').value);
+  const odo = parseFloat(document.getElementById('fuel-odo').value);
+  const station = document.getElementById('fuel-station').value.trim();
+
+  if (!date) { alert('Please enter a date.'); return; }
+  if (isNaN(litres) || litres <= 0) { alert('Please enter the litres filled.'); return; }
+
+  const entry = { id: Date.now(), date, litres, cost: isNaN(cost)?null:cost, odo: isNaN(odo)?null:odo, station, photo: fuelPhotoData };
+  db.fuel.push(entry);
+  db.fuel.sort((a,b) => new Date(b.date) - new Date(a.date));
+  save(db);
+
+  document.getElementById('fuel-date').value = '';
+  document.getElementById('fuel-litres').value = '';
+  document.getElementById('fuel-cost').value = '';
+  document.getElementById('fuel-odo').value = '';
+  document.getElementById('fuel-station').value = '';
+  fuelPhotoData = null;
+  document.getElementById('fuel-photo-preview').innerHTML = '<div class="photo-placeholder"><span>🧾</span>No slip photo yet</div>';
+  document.getElementById('fuel-photo-input').value = '';
+
+  updateFilters();
+  showToast('Fuel entry saved ✓', true);
+}
+
+// ── PHOTO PREVIEW ───────────────────────────────────────────────────────────
+function previewFuelPhoto(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    fuelPhotoData = ev.target.result;
+    document.getElementById('fuel-photo-preview').innerHTML = `<img src="${fuelPhotoData}" alt="Petrol slip">`;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── DASHBOARD STATS ─────────────────────────────────────────────────────────
+function updateDashboard() {
+  const now = new Date();
+  const thisMonth = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+
+  const monthTrips = db.trips.filter(t => t.date.startsWith(thisMonth) && t.km !== null);
+  const totalMonth = monthTrips.reduce((s,t) => s + t.km, 0);
+  const business = monthTrips.filter(t => t.type === 'business').reduce((s,t) => s + t.km, 0);
+  const priv = monthTrips.filter(t => t.type === 'private').reduce((s,t) => s + t.km, 0);
+
+  document.getElementById('stat-month').textContent = totalMonth.toLocaleString() + ' km';
+  document.getElementById('stat-business').textContent = business.toLocaleString() + ' km';
+  document.getElementById('stat-private').textContent = priv.toLocaleString() + ' km';
+
+  // Current odometer = highest closing odo across trips
+  const allOdo = [...db.trips.filter(t=>t.close).map(t=>t.close), ...db.fuel.filter(f=>f.odo).map(f=>f.odo)];
+  const maxOdo = allOdo.length ? Math.max(...allOdo) : null;
+  document.getElementById('currentOdo').innerHTML = maxOdo ? maxOdo.toLocaleString() + '<span> km</span>' : '—<span> km</span>';
+}
+
+// ── FILTERS ──────────────────────────────────────────────────────────────────
+function getMonths() {
+  const months = new Set();
+  [...db.trips, ...db.fuel].forEach(e => {
+    const m = e.date.substring(0,7);
+    months.add(m);
+  });
+  return Array.from(months).sort().reverse();
+}
+
+function updateFilters() {
+  const months = getMonths();
+  ['log-filter','sum-filter'].forEach(id => {
+    const sel = document.getElementById(id);
+    const cur = sel.value;
+    while (sel.options.length > 1) sel.remove(1);
+    months.forEach(m => {
+      const [y,mo] = m.split('-');
+      const label = new Date(y, mo-1, 1).toLocaleString('default', { month: 'long', year: 'numeric' });
+      const opt = new Option(label, m);
+      sel.add(opt);
+    });
+    if (months.includes(cur)) sel.value = cur;
+  });
+}
+
+// ── RENDER LOG ───────────────────────────────────────────────────────────────
+function renderLog() {
+  const filter = document.getElementById('log-filter').value;
+  const list = document.getElementById('log-list');
+
+  let trips = [...db.trips];
+  let fuels = [...db.fuel];
+
+  if (filter !== 'all') {
+    trips = trips.filter(t => t.date.startsWith(filter));
+    fuels = fuels.filter(f => f.date.startsWith(filter));
+  }
+
+  // Merge and sort
+  const all = [
+    ...trips.map(t => ({...t, _kind: 'trip'})),
+    ...fuels.map(f => ({...f, _kind: 'fuel'}))
+  ].sort((a,b) => new Date(b.date) - new Date(a.date));
+
+  document.getElementById('log-count').textContent = all.length + ' ' + (all.length===1?'entry':'entries');
+
+  if (!all.length) {
+    list.innerHTML = '<div class="empty-state"><div class="icon">📋</div><p>No entries yet.<br>Start by logging a trip or fuel fill-up.</p></div>';
+    return;
+  }
+
+  list.innerHTML = all.map(e => {
+    if (e._kind === 'trip') return renderTripCard(e);
+    return renderFuelCard(e);
+  }).join('');
+}
+
+function fmtDate(d) {
+  const [y,m,day] = d.split('-');
+  return new Date(y,m-1,day).toLocaleDateString('en-NZ', {day:'numeric',month:'short',year:'numeric'});
+}
+
+function renderTripCard(t) {
+  const km = t.km !== null ? `<div class="entry-km">${t.km} <span class="unit">km</span></div>` : `<div class="entry-km" style="color:var(--muted)">In progress</div>`;
+  const odo = t.close ? `<div class="sub">${t.open.toLocaleString()} → ${t.close.toLocaleString()} km</div>` : `<div class="sub">Opening: ${t.open.toLocaleString()} km</div>`;
+  const note = t.notes ? `<div class="entry-note">${t.notes}</div>` : '';
+  return `<div class="log-entry ${t.type}">
+    <div class="entry-top">
+      <span class="entry-date">${fmtDate(t.date)}</span>
+      <span class="entry-type ${t.type}">${t.type}</span>
+    </div>
+    ${km}${odo}
+    <div class="entry-dest">${t.dest}</div>
+    ${note}
+    <div class="entry-actions">
+      <button class="delete-btn" onclick="deleteTrip(${t.id})">Delete entry</button>
+    </div>
+  </div>`;
+}
+
+function renderFuelCard(f) {
+  const photo = f.photo ? `<div class="fuel-slip-preview"><img src="${f.photo}" alt="Slip"></div>` : '';
+  const cost = f.cost ? ` · NZD $${f.cost.toFixed(2)}` : '';
+  const station = f.station ? ` · ${f.station}` : '';
+  const odo = f.odo ? `<div class="sub">${f.odo.toLocaleString()} km</div>` : '';
+  return `<div class="log-entry fuel-entry">
+    <div class="entry-top">
+      <span class="entry-date">${fmtDate(f.date)}</span>
+      <span class="entry-type fuel">Fuel</span>
+    </div>
+    <div class="entry-km">${f.litres.toFixed(1)} <span class="unit">L</span></div>
+    ${odo}
+    <div class="entry-dest">${f.litres.toFixed(1)} litres${cost}${station}</div>
+    ${photo}
+    <div class="entry-actions">
+      <button class="delete-btn" onclick="deleteFuel(${f.id})">Delete entry</button>
+    </div>
+  </div>`;
+}
+
+function deleteTrip(id) {
+  if (!confirm('Delete this trip entry?')) return;
+  db.trips = db.trips.filter(t => t.id !== id);
+  save(db);
+  updateDashboard();
+  updateFilters();
+  renderLog();
+}
+function deleteFuel(id) {
+  if (!confirm('Delete this fuel entry?')) return;
+  db.fuel = db.fuel.filter(f => f.id !== id);
+  save(db);
+  updateFilters();
+  renderLog();
+}
+
+// ── RENDER SUMMARY ───────────────────────────────────────────────────────────
+function renderSummary() {
+  const filter = document.getElementById('sum-filter').value;
+  let trips = [...db.trips];
+  let fuels = [...db.fuel];
+  if (filter !== 'all') {
+    trips = trips.filter(t => t.date.startsWith(filter));
+    fuels = fuels.filter(f => f.date.startsWith(filter));
+  }
+
+  const completedTrips = trips.filter(t => t.km !== null);
+  const business = completedTrips.filter(t => t.type === 'business').reduce((s,t)=>s+t.km,0);
+  const priv = completedTrips.filter(t => t.type === 'private').reduce((s,t)=>s+t.km,0);
+  const total = business + priv;
+  const fuelLitres = fuels.reduce((s,f)=>s+f.litres,0);
+  const fuelCost = fuels.filter(f=>f.cost).reduce((s,f)=>s+f.cost,0);
+
+  const el = document.getElementById('summary-content');
+  el.innerHTML = `
+    <h3>Kilometre Summary</h3>
+    <table class="summary-table">
+      <thead><tr><th>Type</th><th>Trips</th><th>Kilometres</th><th>%</th></tr></thead>
+      <tbody>
+        <tr><td>Business</td><td>${completedTrips.filter(t=>t.type==='business').length}</td><td style="color:var(--green)">${business.toLocaleString()} km</td><td>${total?Math.round(business/total*100):0}%</td></tr>
+        <tr><td>Private</td><td>${completedTrips.filter(t=>t.type==='private').length}</td><td style="color:var(--danger)">${priv.toLocaleString()} km</td><td>${total?Math.round(priv/total*100):0}%</td></tr>
+        <tr><td class="tot">Total</td><td class="tot">${completedTrips.length}</td><td class="tot">${total.toLocaleString()} km</td><td class="tot">100%</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Fuel Summary</h3>
+    <table class="summary-table">
+      <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Fill-ups</td><td>${fuels.length}</td></tr>
+        <tr><td>Total Litres</td><td style="color:var(--fuel)">${fuelLitres.toFixed(1)} L</td></tr>
+        <tr><td>Total Cost</td><td style="color:var(--fuel)">${fuelCost > 0 ? 'NZD $' + fuelCost.toFixed(2) : '—'}</td></tr>
+        ${total && fuelLitres ? `<tr><td>Avg Consumption</td><td>${(fuelLitres/total*100).toFixed(1)} L/100km</td></tr>` : ''}
+      </tbody>
+    </table>
+
+    ${completedTrips.length > 0 ? `
+    <h3>Trip Detail</h3>
+    <table class="summary-table">
+      <thead><tr><th>Date</th><th>Destination</th><th>km</th><th>Type</th></tr></thead>
+      <tbody>
+        ${completedTrips.map(t=>`<tr>
+          <td style="font-size:0.8rem;white-space:nowrap">${fmtDate(t.date)}</td>
+          <td style="font-size:0.82rem">${t.dest}</td>
+          <td>${t.km}</td>
+          <td style="font-size:0.75rem;color:${t.type==='business'?'var(--accent)':'var(--danger)'}">${t.type}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>` : ''}
+  `;
+}
+
+// ── EXPORT CSV ───────────────────────────────────────────────────────────────
+function exportCSV() {
+  const rows = [['Date','Type','Opening Odo','Closing Odo','KM','Destination','Notes']];
+  db.trips.forEach(t => rows.push([t.date, t.type, t.open, t.close??'', t.km??'', t.dest, t.notes]));
+  const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'MTY291_mileage_log.csv';
+  a.click();
+}
+
+// ── TOAST ────────────────────────────────────────────────────────────────────
+function showToast(msg, isFuel) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isFuel ? ' fuel-toast' : '') + ' show';
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── VOICE INPUT ──────────────────────────────────────────────────────────────
+let recognition = null;
+let isListening = false;
+
+function initVoice() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    document.getElementById('voice-card').innerHTML = `
+      <h3>Voice Entry</h3>
+      <p style="color:var(--muted);font-size:0.85rem;padding:10px 0">
+        Voice input is not supported in this browser.<br>
+        Use Chrome or Safari on your phone for voice support.
+      </p>`;
+    return;
+  }
+
+  recognition = new SpeechRecognition();
+  recognition.lang = 'en-NZ';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
+
+  recognition.onstart = () => {
+    isListening = true;
+    setMicState('listening', 'Listening… speak now');
+  };
+
+  recognition.onresult = (e) => {
+    const interim = Array.from(e.results).map(r => r[0].transcript).join('');
+    const transcript = document.getElementById('voice-transcript');
+    transcript.textContent = '"' + interim + '"';
+    transcript.classList.add('visible');
+
+    if (e.results[e.results.length - 1].isFinal) {
+      const final = e.results[e.results.length - 1][0].transcript;
+      processVoiceInput(final);
+    }
+  };
+
+  recognition.onerror = (e) => {
+    isListening = false;
+    const msgs = {
+      'no-speech': 'No speech detected — try again',
+      'audio-capture': 'Microphone not found',
+      'not-allowed': 'Microphone permission denied',
+      'network': 'Network error — check connection'
+    };
+    setMicState('error', msgs[e.error] || 'Error: ' + e.error);
+    resetMicBtn();
+  };
+
+  recognition.onend = () => {
+    isListening = false;
+    resetMicBtn();
+  };
+}
+
+function toggleVoice() {
+  if (!recognition) { initVoice(); if (!recognition) return; }
+  if (isListening) {
+    recognition.stop();
+    setMicState('', 'Tap the mic and speak your trip');
+    resetMicBtn();
+  } else {
+    document.getElementById('voice-transcript').classList.remove('visible');
+    document.getElementById('voice-parsed').classList.remove('visible');
+    recognition.start();
+  }
+}
+
+function setMicState(state, msg) {
+  const btn = document.getElementById('mic-btn');
+  const status = document.getElementById('voice-status');
+  btn.className = 'mic-btn' + (state === 'listening' ? ' listening' : state === 'processing' ? ' processing' : '');
+  btn.textContent = state === 'listening' ? '⏹' : state === 'processing' ? '⟳' : '🎙';
+  status.className = 'voice-status' + (state ? ' ' + state : '');
+  status.textContent = msg;
+}
+
+function resetMicBtn() {
+  setTimeout(() => {
+    const btn = document.getElementById('mic-btn');
+    if (!isListening) {
+      btn.className = 'mic-btn';
+      btn.textContent = '🎙';
+    }
+  }, 300);
+}
+
+function processVoiceInput(text) {
+  setMicState('processing', 'Processing…');
+  const lower = text.toLowerCase();
+  const parsed = {};
+
+  // ── Detect if fuel entry ──
+  const isFuel = /fuel|petrol|litre|liter|fill|tank/.test(lower);
+
+  if (isFuel) {
+    // Litres: "48 litres", "48.2 liters", "filled 50"
+    const litreMatch = lower.match(/(\d+(?:\.\d+)?)\s*(?:litre|liter|l\b)/);
+    if (litreMatch) parsed.litres = parseFloat(litreMatch[1]);
+
+    // Cost: "112 dollars", "$112", "cost 98.50"
+    const costMatch = lower.match(/(?:\$|dollar|cost|paid|nzd)[\s]*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*(?:dollar|nzd)/);
+    if (costMatch) parsed.cost = parseFloat(costMatch[1] || costMatch[2]);
+
+    // Odo: "odo 48700", "odometer 48700", "at 48700"
+    const odoMatch = lower.match(/(?:odo(?:meter)?|at|reading)\s*(\d{4,6})/);
+    if (odoMatch) parsed.odo = parseInt(odoMatch[1]);
+
+    // Station
+    const stationMatch = lower.match(/(?:at|from|station)\s+([a-z][\w\s]+?)(?:\s*$|,)/);
+    if (stationMatch && !odoMatch) parsed.station = toTitleCase(stationMatch[1].trim());
+
+    showParsedPreview(parsed, 'fuel');
+    applyFuelVoice(parsed);
+
+  } else {
+    // ── Trip entry ──
+
+    // Trip type: private if mentioned, else business
+    parsed.type = /private|personal/.test(lower) ? 'private' : 'business';
+
+    // Opening odo: first big number (4-6 digits)
+    // Closing odo: second big number, or "to XXXXX"
+    const numbers = [...lower.matchAll(/\b(\d{4,6})\b/g)].map(m => parseInt(m[1]));
+
+    if (numbers.length >= 2) {
+      parsed.open = numbers[0];
+      parsed.close = numbers[1];
+    } else if (numbers.length === 1) {
+      parsed.open = numbers[0];
+    }
+
+    // Override with explicit "to" pattern: "45230 to 45318"
+    const rangeMatch = lower.match(/(\d{4,6})\s+to\s+(\d{4,6})/);
+    if (rangeMatch) {
+      parsed.open = parseInt(rangeMatch[1]);
+      parsed.close = parseInt(rangeMatch[2]);
+    }
+
+    // Destination: text after "to" / "visit" / "going to" / "trip to"
+    // Grab the meaningful phrase before any number
+    const destPatterns = [
+      /(?:trip to|going to|client visit|visit|meeting at|to)\s+([a-z][a-z\s\-]+?)(?:\s*,|\s*\d|$)/,
+      /^([a-z][a-z\s\-]+?)\s+(?:opening|\d{4,6}|odo)/,
+    ];
+    for (const pat of destPatterns) {
+      const m = lower.match(pat);
+      if (m) { parsed.dest = toTitleCase(m[1].trim()); break; }
+    }
+
+    // Notes: anything after "notes", "note", "re:", "for"
+    const noteMatch = lower.match(/(?:note[s]?|re:|for)\s+(.+)$/);
+    if (noteMatch) parsed.notes = toTitleCase(noteMatch[1].trim());
+
+    showParsedPreview(parsed, 'trip');
+    applyTripVoice(parsed);
+  }
+
+  setTimeout(() => setMicState('success', '✓ Fields filled — check and save'), 400);
+  setTimeout(() => {
+    document.getElementById('voice-status').className = 'voice-status';
+    document.getElementById('voice-status').textContent = 'Tap the mic and speak your trip';
+  }, 4000);
+}
+
+function toTitleCase(str) {
+  return str.replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function applyTripVoice(p) {
+  if (p.open) document.getElementById('trip-open').value = p.open;
+  if (p.close) document.getElementById('trip-close').value = p.close;
+  if (p.dest) document.getElementById('trip-dest').value = p.dest;
+  if (p.notes) document.getElementById('trip-notes').value = p.notes;
+  if (p.type) selectType(p.type);
+  // Scroll to form
+  document.getElementById('trip-open').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function applyFuelVoice(p) {
+  // Switch to fuel tab
+  showTab('fuel');
+  if (p.litres) document.getElementById('fuel-litres').value = p.litres;
+  if (p.cost) document.getElementById('fuel-cost').value = p.cost;
+  if (p.odo) document.getElementById('fuel-odo').value = p.odo;
+  if (p.station) document.getElementById('fuel-station').value = p.station;
+}
+
+function showParsedPreview(p, kind) {
+  const el = document.getElementById('voice-parsed');
+  const rows = [];
+  if (kind === 'trip') {
+    if (p.type) rows.push(['Type', toTitleCase(p.type)]);
+    if (p.open) rows.push(['Opening Odo', p.open.toLocaleString() + ' km']);
+    if (p.close) rows.push(['Closing Odo', p.close.toLocaleString() + ' km']);
+    if (p.dest) rows.push(['Destination', p.dest]);
+    if (p.notes) rows.push(['Notes', p.notes]);
+  } else {
+    if (p.litres) rows.push(['Litres', p.litres + ' L']);
+    if (p.cost) rows.push(['Cost', 'NZD $' + p.cost.toFixed(2)]);
+    if (p.odo) rows.push(['Odometer', p.odo.toLocaleString() + ' km']);
+    if (p.station) rows.push(['Station', p.station]);
+  }
+
+  if (!rows.length) {
+    el.classList.remove('visible');
+    return;
+  }
+
+  el.innerHTML = rows.map(([k,v]) => `
+    <div class="p-row">
+      <span class="p-key">${k}</span>
+      <span class="p-val">${v}</span>
+    </div>`).join('');
+  el.classList.add('visible');
+}
+
+function resetSettings() {
+  if (!confirm('Change your vehicle/name details?')) return;
+  db.settings = null;
+  save(db);
+  document.getElementById('setup-name').value = '';
+  document.getElementById('setup-rego').value = '';
+  document.getElementById('setup-company').value = '';
+  document.getElementById('setup-screen').classList.remove('hidden');
+}
+
+// ── SETUP ────────────────────────────────────────────────────────────────────
+function saveSetup() {
+  const name = document.getElementById('setup-name').value.trim();
+  const rego = document.getElementById('setup-rego').value.trim().toUpperCase();
+  const company = document.getElementById('setup-company').value.trim();
+
+  if (!rego) { alert('Please enter your vehicle registration.'); return; }
+
+  db.settings = { name, rego, company: company || 'Fleet Logbook' };
+  save(db);
+  applySettings();
+  document.getElementById('setup-screen').classList.add('hidden');
+}
+
+function applySettings() {
+  const s = db.settings || {};
+  const rego = s.rego || 'EmberDrive';
+  const company = s.company || 'Fleet Logbook';
+  const name = s.name || '';
+  document.getElementById('header-title').textContent = rego;
+  document.getElementById('header-sub').textContent = (name ? name + ' · ' : '') + company;
+}
+
+function checkSetup() {
+  if (db.settings && db.settings.rego) {
+    document.getElementById('setup-screen').classList.add('hidden');
+    applySettings();
+  }
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+function init() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('trip-date').value = today;
+  document.getElementById('fuel-date').value = today;
+  updateDashboard();
+  updateFilters();
+  initVoice();
+  checkSetup();
+}
+init();
+</script>
+</body>
+</html>
