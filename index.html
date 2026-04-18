@@ -34,6 +34,53 @@
     padding-bottom: 40px;
   }
 
+  /* SETUP SCREEN */
+  .setup-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 24px;
+  }
+  .setup-screen.hidden { display: none; }
+  .setup-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .setup-logo span { color: var(--accent2); }
+  .setup-tagline {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .setup-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+  }
+  .setup-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
   /* HEADER */
   header {
     background: var(--surface);
@@ -622,10 +669,26 @@
 </head>
 <body>
 
+<!-- SETUP SCREEN -->
+<div class="setup-screen" id="setup-screen">
+  <div class="setup-logo">EMBER<span>DRIVE</span></div>
+  <div class="setup-tagline">Fleet Logbook · First Time Setup</div>
+  <div class="setup-card">
+    <h3>Tell us about your vehicle</h3>
+    <label>Your Name</label>
+    <input type="text" id="setup-name" placeholder="e.g. Ilka">
+    <label>Vehicle Registration</label>
+    <input type="text" id="setup-rego" placeholder="e.g. MTY291" style="text-transform:uppercase">
+    <label>Company Name</label>
+    <input type="text" id="setup-company" placeholder="e.g. Ember Employment">
+    <button class="btn btn-primary" onclick="saveSetup()">Get Started 🔥</button>
+  </div>
+</div>
+
 <header>
   <div class="header-left">
-    <h1>EmberDrive</h1>
-    <p>MTY291 · Ember Employment</p>
+    <h1 id="header-title">EmberDrive</h1>
+    <p id="header-sub">Fleet Logbook</p>
   </div>
   <div class="odometer-badge">
     <div class="label">Current Odo</div>
@@ -765,6 +828,9 @@
   <div class="export-row">
     <button class="btn-export" onclick="exportCSV()">⬇ Export CSV</button>
     <button class="btn-export" onclick="window.print()">🖨 Print</button>
+  </div>
+  <div class="export-row">
+    <button class="btn-export" onclick="resetSettings()">⚙ Change Vehicle/Name</button>
   </div>
 
   <div class="summary-section" id="summary-content"></div>
@@ -1315,6 +1381,46 @@ function showParsedPreview(p, kind) {
   el.classList.add('visible');
 }
 
+function resetSettings() {
+  if (!confirm('Change your vehicle/name details?')) return;
+  db.settings = null;
+  save(db);
+  document.getElementById('setup-name').value = '';
+  document.getElementById('setup-rego').value = '';
+  document.getElementById('setup-company').value = '';
+  document.getElementById('setup-screen').classList.remove('hidden');
+}
+
+// ── SETUP ────────────────────────────────────────────────────────────────────
+function saveSetup() {
+  const name = document.getElementById('setup-name').value.trim();
+  const rego = document.getElementById('setup-rego').value.trim().toUpperCase();
+  const company = document.getElementById('setup-company').value.trim();
+
+  if (!rego) { alert('Please enter your vehicle registration.'); return; }
+
+  db.settings = { name, rego, company: company || 'Fleet Logbook' };
+  save(db);
+  applySettings();
+  document.getElementById('setup-screen').classList.add('hidden');
+}
+
+function applySettings() {
+  const s = db.settings || {};
+  const rego = s.rego || 'EmberDrive';
+  const company = s.company || 'Fleet Logbook';
+  const name = s.name || '';
+  document.getElementById('header-title').textContent = rego;
+  document.getElementById('header-sub').textContent = (name ? name + ' · ' : '') + company;
+}
+
+function checkSetup() {
+  if (db.settings && db.settings.rego) {
+    document.getElementById('setup-screen').classList.add('hidden');
+    applySettings();
+  }
+}
+
 // ── INIT ─────────────────────────────────────────────────────────────────────
 function init() {
   const today = new Date().toISOString().split('T')[0];
@@ -1323,6 +1429,7 @@ function init() {
   updateDashboard();
   updateFilters();
   initVoice();
+  checkSetup();
 }
 init();
 </script>
