@@ -87,11 +87,23 @@ function renderLogView() {
 }
 
 // ============================================
+// Parse a dictated/typed odometer reading
+// Strips commas, spaces, and any stray characters that
+// dictation might add (e.g. "71,018" or "71 018" -> 71018)
+// ============================================
+function parseOdo(value) {
+  if (value == null) return NaN;
+  const cleaned = String(value).replace(/[^0-9.]/g, '');
+  if (cleaned === '') return NaN;
+  return parseFloat(cleaned);
+}
+
+// ============================================
 // Distance preview (during finish step)
 // ============================================
 function updateDistance() {
   if (!inProgress) return;
-  const e = parseFloat(odoEnd.value);
+  const e = parseOdo(odoEnd.value);
 
   if (isNaN(e)) {
     distanceValue.textContent = '—';
@@ -115,7 +127,7 @@ odoEnd.addEventListener('input', updateDistance);
 // Start a trip
 // ============================================
 btnStartTrip.addEventListener('click', () => {
-  const s = parseFloat(odoStart.value);
+  const s = parseOdo(odoStart.value);
 
   if (isNaN(s)) {
     showToast('Please enter the start odometer reading');
@@ -148,7 +160,7 @@ btnStartTrip.addEventListener('click', () => {
 btnFinishTrip.addEventListener('click', () => {
   if (!inProgress) return;
 
-  const e = parseFloat(odoEnd.value);
+  const e = parseOdo(odoEnd.value);
 
   if (isNaN(e)) {
     showToast('Please enter the end odometer reading');
