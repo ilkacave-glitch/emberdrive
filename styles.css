@@ -1,0 +1,769 @@
+/* ============================================
+   Mileage — warm, grounded, calm
+   Designed for one-handed use on iPhone
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Geist:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #f5f1e8;
+  --bg-card: #ffffff;
+  --bg-elevated: #faf6ec;
+  --ink: #1f2a25;
+  --ink-soft: #5a665f;
+  --ink-faint: #8b948c;
+  --moss: #2d4a3e;
+  --moss-light: #e8efe9;
+  --rust: #b8593a;
+  --gold: #c89758;
+  --line: rgba(31, 42, 37, 0.08);
+  --line-strong: rgba(31, 42, 37, 0.15);
+  --danger: #a04040;
+  --shadow-soft: 0 1px 3px rgba(31, 42, 37, 0.04), 0 1px 2px rgba(31, 42, 37, 0.02);
+  --radius: 14px;
+  --radius-lg: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 18px 32px;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.header {
+  padding: 24px 0 20px;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.kia-ora {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 4px;
+  letter-spacing: 0.01em;
+}
+
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 144;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--moss);
+  line-height: 1;
+}
+
+.month-stat {
+  text-align: right;
+  padding-top: 6px;
+}
+
+.month-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  margin: 0 0 4px;
+  font-weight: 500;
+}
+
+.month-total {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 144;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.km-unit {
+  font-size: 14px;
+  color: var(--ink-faint);
+  margin-left: 2px;
+  font-weight: 400;
+}
+
+/* ============================================
+   Tabs
+   ============================================ */
+.tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--bg-elevated);
+  padding: 5px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  border: 0.5px solid var(--line);
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 11px 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.tab-icon {
+  font-size: 16px;
+  color: var(--ink-faint);
+  transition: color 0.2s;
+}
+
+.tab.active {
+  background: var(--moss);
+  color: #f5f1e8;
+  box-shadow: 0 1px 2px rgba(45, 74, 62, 0.2);
+}
+
+.tab.active .tab-icon {
+  color: #f5f1e8;
+}
+
+/* ============================================
+   Views
+   ============================================ */
+.view {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.view.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+.card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+.card-route {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 12px;
+}
+
+.card-odometer {
+  padding: 18px;
+}
+
+.card-danger {
+  background: #fdf6f4;
+  border-color: rgba(160, 64, 64, 0.15);
+}
+
+.card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.card-hint {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+  line-height: 1.45;
+}
+
+/* ============================================
+   Inputs
+   ============================================ */
+.field-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--line-strong);
+  padding: 8px 0 10px;
+  font-family: inherit;
+  font-size: 17px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input:focus {
+  border-bottom-color: var(--moss);
+}
+
+.input-date,
+.input-select {
+  background-image: none;
+}
+
+.input-select {
+  background-color: transparent;
+  padding-right: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235a665f' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+}
+
+/* Odometer specific */
+.odo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.input-odo {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 144;
+  letter-spacing: -0.01em;
+  padding: 4px 0 8px;
+}
+
+.input-odo::placeholder {
+  color: var(--ink-faint);
+  opacity: 0.5;
+}
+
+/* Distance display */
+.distance-display {
+  background: var(--moss-light);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+}
+
+.distance-display.error {
+  background: #fdf0eb;
+}
+
+.distance-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--moss);
+  font-weight: 500;
+}
+
+.distance-display.error .distance-label {
+  color: var(--rust);
+}
+
+.distance-value {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 144;
+  color: var(--moss);
+  letter-spacing: -0.01em;
+}
+
+.distance-display.error .distance-value {
+  color: var(--rust);
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Route arrow */
+.route-divider {
+  padding-bottom: 10px;
+}
+
+.route-arrow {
+  color: var(--gold);
+  font-size: 20px;
+  font-family: 'Fraunces', serif;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn-save {
+  width: 100%;
+  background: var(--moss);
+  color: #f5f1e8;
+  border: none;
+  padding: 18px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 8px;
+  letter-spacing: -0.01em;
+  transition: transform 0.1s, background 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btn-save:active {
+  transform: scale(0.98);
+  background: #1f3a30;
+}
+
+.btn-export {
+  width: 100%;
+  background: var(--moss);
+  color: #f5f1e8;
+  border: none;
+  padding: 16px 18px;
+  font-family: inherit;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 12px;
+  text-align: left;
+  transition: transform 0.1s, background 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+}
+
+.btn-export:active {
+  transform: scale(0.98);
+}
+
+.btn-export-label {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.btn-export-sub {
+  display: block;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.btn-export-secondary {
+  background: var(--bg-card);
+  color: var(--moss);
+  border: 1px solid var(--moss);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(160, 64, 64, 0.3);
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ============================================
+   Trip in progress banner
+   ============================================ */
+.trip-in-progress {
+  background: var(--moss);
+  color: #f5f1e8;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(45, 74, 62, 0.18);
+}
+
+.tip-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.tip-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(200, 151, 88, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(200, 151, 88, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(200, 151, 88, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(200, 151, 88, 0); }
+}
+
+.tip-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  margin: 0;
+  color: var(--gold);
+}
+
+.tip-route {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.tip-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 0.5px solid rgba(245, 241, 232, 0.15);
+}
+
+.tip-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tip-stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.tip-stat-value {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================
+   Big single odometer input (for one-at-a-time entry)
+   ============================================ */
+.input-odo-big {
+  font-family: 'Fraunces', serif;
+  font-size: 38px;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 144;
+  letter-spacing: -0.02em;
+  padding: 8px 0 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.input-odo-big::placeholder {
+  color: var(--ink-faint);
+  opacity: 0.4;
+}
+
+/* ============================================
+   Cancel button
+   ============================================ */
+.btn-cancel {
+  width: 100%;
+  background: transparent;
+  color: var(--ink-soft);
+  border: none;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 4px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btn-cancel:active {
+  color: var(--danger);
+}
+
+.form-section {
+  display: block;
+}
+
+.form-section[hidden] {
+  display: none;
+}
+
+/* ============================================
+   Trips list
+   ============================================ */
+.trips-header {
+  padding: 8px 4px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.trips-header h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.trips-summary {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.trips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trip-item {
+  background: var(--bg-card);
+  border: 0.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow-soft);
+}
+
+.trip-date-block {
+  text-align: center;
+  min-width: 38px;
+  padding-right: 12px;
+  border-right: 0.5px solid var(--line);
+}
+
+.trip-day {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.trip-month {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.trip-info {
+  min-width: 0;
+}
+
+.trip-route {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trip-purpose {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trip-distance {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--moss);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.trip-distance-unit {
+  font-size: 11px;
+  color: var(--ink-faint);
+  font-family: 'Geist', sans-serif;
+  margin-left: 1px;
+}
+
+.trip-delete {
+  background: transparent;
+  border: none;
+  color: var(--ink-faint);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.trip-delete:active {
+  color: var(--danger);
+}
+
+/* Empty states */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--ink-soft);
+}
+
+.empty-state-icon {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.empty-state-text {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ============================================
+   Export view
+   ============================================ */
+.export-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.export-blurb {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+
+.export-preview {
+  margin: 16px 0;
+  padding: 12px 14px;
+  background: var(--moss-light);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--moss);
+  font-weight: 500;
+}
+
+/* ============================================
+   Toast
+   ============================================ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--moss);
+  color: #f5f1e8;
+  padding: 12px 22px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(45, 74, 62, 0.25);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
