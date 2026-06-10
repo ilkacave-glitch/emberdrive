@@ -545,6 +545,206 @@ body {
 }
 
 /* ============================================
+   Round trip checkbox card
+   ============================================ */
+.card-roundtrip {
+  padding: 14px 16px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.checkbox {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  margin-top: 1px;
+  accent-color: var(--moss);
+  cursor: pointer;
+}
+
+.checkbox-label {
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.checkbox-hint {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 8px 0 0;
+  padding-left: 32px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ============================================
+   Custom "Other" text fields
+   ============================================ */
+.custom-field {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 0.5px dashed var(--line-strong);
+}
+
+.input-custom {
+  width: 100%;
+  font-size: 15px;
+  padding: 6px 0 8px;
+}
+
+.custom-hint {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin: 4px 0 0;
+  font-style: italic;
+}
+
+/* ============================================
+   Reason for odometer override
+   ============================================ */
+.reason-wrap {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #fdf6f4;
+  border: 0.5px solid rgba(160, 64, 64, 0.2);
+  border-radius: 10px;
+}
+
+.reason-wrap .field-label {
+  margin-bottom: 6px;
+}
+
+.reason-wrap .input-custom {
+  margin-top: 8px;
+}
+
+/* ============================================
+   Secondary button (for "Add a stop")
+   ============================================ */
+.btn-secondary {
+  width: 100%;
+  background: var(--bg-card);
+  color: var(--moss);
+  border: 1px solid var(--moss);
+  padding: 14px;
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 8px;
+  letter-spacing: -0.01em;
+  transition: transform 0.1s, background 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+  background: var(--moss-light);
+}
+
+/* ============================================
+   Multi-leg trip in progress legs display
+   ============================================ */
+.tip-legs {
+  font-size: 12px;
+  color: rgba(245, 241, 232, 0.8);
+  margin: 4px 0 14px;
+  line-height: 1.5;
+  padding: 8px 10px;
+  background: rgba(245, 241, 232, 0.08);
+  border-radius: 8px;
+  font-family: 'Geist', sans-serif;
+}
+
+/* ============================================
+   Trip reason warning (in trips list)
+   ============================================ */
+.trip-reason {
+  font-size: 11px;
+  color: var(--rust);
+  margin-top: 4px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ============================================
+   Saved customs (chips)
+   ============================================ */
+.customs-list {
+  margin-top: 4px;
+}
+
+.customs-section {
+  margin-bottom: 14px;
+}
+
+.customs-section:last-child {
+  margin-bottom: 0;
+}
+
+.customs-section-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.customs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.custom-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--moss-light);
+  color: var(--moss);
+  padding: 5px 6px 5px 10px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chip-x {
+  background: transparent;
+  border: none;
+  color: var(--moss);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  border-radius: 50%;
+  opacity: 0.6;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.chip-x:active {
+  opacity: 1;
+  color: var(--danger);
+}
+
+.empty-customs {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ============================================
    Cancel button
    ============================================ */
 .btn-cancel {

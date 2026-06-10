@@ -1,6 +1,6 @@
 /* Service worker for offline mileage tracking */
 
-const CACHE_NAME = 'mileage-v4';
+const CACHE_NAME = 'mileage-v5';
 const ASSETS = [
   './',
   './index.html',

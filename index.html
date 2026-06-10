@@ -45,21 +45,22 @@
 
     <main class="view active" id="view-log" role="tabpanel">
 
-      <!-- TRIP IN PROGRESS BANNER (hidden by default) -->
+      <!-- TRIP IN PROGRESS BANNER -->
       <div class="trip-in-progress" id="trip-in-progress" hidden>
         <div class="tip-header">
           <div class="tip-pulse"></div>
           <p class="tip-label">Trip in progress</p>
         </div>
         <p class="tip-route" id="tip-route">—</p>
+        <p class="tip-legs" id="tip-legs" hidden></p>
         <div class="tip-stats">
           <div class="tip-stat">
             <span class="tip-stat-label">Started</span>
             <span class="tip-stat-value" id="tip-started">—</span>
           </div>
           <div class="tip-stat">
-            <span class="tip-stat-label">Start odo</span>
-            <span class="tip-stat-value" id="tip-start-odo">—</span>
+            <span class="tip-stat-label" id="tip-odo-label">Start odo</span>
+            <span class="tip-stat-value" id="tip-current-odo">—</span>
           </div>
         </div>
       </div>
@@ -73,54 +74,58 @@
 
         <div class="card">
           <label class="field-label">Purpose</label>
-          <select id="trip-purpose" class="input input-select">
-            <option>Client visit</option>
-            <option>Clinical meeting at Helensville</option>
-            <option>Team meeting</option>
-            <option>Employer visit</option>
-            <option>Training</option>
-            <option>Supervision</option>
-            <option>Other</option>
-          </select>
+          <select id="trip-purpose" class="input input-select"></select>
+          <div class="custom-field" id="custom-purpose-wrap" hidden>
+            <input type="text" id="custom-purpose" class="input input-custom" placeholder="Type or speak the purpose" autocomplete="off" />
+            <p class="custom-hint">This will be saved for next time</p>
+          </div>
         </div>
 
         <div class="card card-route">
           <div class="route-row">
             <label class="field-label">From</label>
-            <select id="trip-from" class="input input-select">
-              <option>Glenfield (home)</option>
-              <option>Helensville DHB</option>
-              <option>Orewa Hub</option>
-              <option>Apollo Hub</option>
-              <option>12 Ross Ave</option>
-              <option>Petrol Stop</option>
-              <option>Client location</option>
-              <option>Other</option>
-            </select>
+            <select id="trip-from" class="input input-select"></select>
+            <div class="custom-field" id="custom-from-wrap" hidden>
+              <input type="text" id="custom-from" class="input input-custom" placeholder="Type or speak from where" autocomplete="off" />
+            </div>
           </div>
           <div class="route-divider">
             <span class="route-arrow">→</span>
           </div>
           <div class="route-row">
             <label class="field-label">To</label>
-            <select id="trip-to" class="input input-select">
-              <option>Helensville DHB</option>
-              <option>Glenfield (home)</option>
-              <option>Orewa Hub</option>
-              <option>Apollo Hub</option>
-              <option>12 Ross Ave</option>
-              <option>Petrol Stop</option>
-              <option>Client location</option>
-              <option>Other</option>
-            </select>
+            <select id="trip-to" class="input input-select"></select>
+            <div class="custom-field" id="custom-to-wrap" hidden>
+              <input type="text" id="custom-to" class="input input-custom" placeholder="Type or speak destination" autocomplete="off" />
+            </div>
           </div>
+        </div>
+
+        <div class="card card-roundtrip">
+          <label class="checkbox-row">
+            <input type="checkbox" id="round-trip-check" class="checkbox" />
+            <span class="checkbox-label">Returning here at the end (round trip)</span>
+          </label>
+          <p class="checkbox-hint">You can still change your mind later if your day takes a different turn</p>
         </div>
 
         <div class="card card-odometer">
           <p class="card-title">Start odometer</p>
-          <p class="card-hint">Tap the field, then tap the mic on your keyboard to speak the number</p>
+          <p class="card-hint" id="start-odo-hint">Tap the field, then tap the mic on your keyboard to speak the number</p>
           <input type="text" inputmode="text" id="odo-start" class="input input-odo-big" placeholder="0" autocomplete="off" autocorrect="off" />
-          <p class="mic-hint">Tip: tap the field, then the 🎤 on your keyboard, and say the number</p>
+
+          <div class="reason-wrap" id="reason-wrap" hidden>
+            <label class="field-label">Why is this different?</label>
+            <select id="reason-select" class="input input-select">
+              <option value="">Pick a reason</option>
+              <option>Someone else drove the vehicle</option>
+              <option>Personal use</option>
+              <option>Forgot to log a previous trip</option>
+              <option>Vehicle was serviced</option>
+              <option>Other</option>
+            </select>
+            <input type="text" id="reason-other" class="input input-custom" placeholder="Explain" autocomplete="off" hidden />
+          </div>
         </div>
 
         <button class="btn-save" id="btn-start-trip">
@@ -128,21 +133,34 @@
         </button>
       </div>
 
-      <!-- FINISH TRIP FORM (hidden by default) -->
+      <!-- FINISH / ADD STOP FORM -->
       <div class="form-section" id="finish-form" hidden>
         <div class="card card-odometer">
-          <p class="card-title">End odometer</p>
+          <p class="card-title" id="finish-odo-title">End odometer</p>
           <p class="card-hint">Tap the field, then tap the mic on your keyboard to speak the number</p>
           <input type="text" inputmode="text" id="odo-end" class="input input-odo-big" placeholder="0" autocomplete="off" autocorrect="off" />
 
           <div class="distance-display" id="distance-display">
-            <span class="distance-label">Distance</span>
+            <span class="distance-label" id="distance-label">Distance</span>
             <span class="distance-value" id="distance-value">—</span>
+          </div>
+        </div>
+
+        <!-- Add stop section (shown when adding a stop, not finishing) -->
+        <div class="card" id="add-stop-form" hidden>
+          <label class="field-label">Next destination</label>
+          <select id="next-to" class="input input-select"></select>
+          <div class="custom-field" id="custom-next-to-wrap" hidden>
+            <input type="text" id="custom-next-to" class="input input-custom" placeholder="Type or speak destination" autocomplete="off" />
           </div>
         </div>
 
         <button class="btn-save" id="btn-finish-trip">
           Finish trip
+        </button>
+
+        <button class="btn-secondary" id="btn-add-stop">
+          Add a stop instead
         </button>
 
         <button class="btn-cancel" id="btn-cancel-trip">
@@ -181,6 +199,12 @@
           <span class="btn-export-label">Email to Vikram</span>
           <span class="btn-export-sub">Opens your mail app with it ready to go</span>
         </button>
+      </div>
+
+      <div class="card">
+        <p class="card-title">Saved custom destinations</p>
+        <p class="card-hint">Places you've added with "Other". Tap × to remove any you don't need anymore.</p>
+        <div id="customs-list" class="customs-list"></div>
       </div>
 
       <div class="card card-danger">
